@@ -30,3 +30,11 @@ There are some differences from the original DQN paper in this implementation:
 * There is no frame-skipping because this is already implemented with random skips by gym.
 * The score panel is cropped out and pixels are binarized instead of grayscaled. This helps speed up learning for Breakout but may not be ideal for other games.
 * atari-py was recently updated with 4 actions for Breakout (NOOP, FIRE, RIGHT, LEFT) instead of 6 to remove two redundant actions.
+
+## Notebooks
+
+There are two notebooks to accompany the DQN:
+
+* `TensorBoard Embedding Visualization.ipynb` uses the trained agent to collect samples from games and extract 'embeddings' from the last fully-connected hidden layer. It compiles these images + embeddings + metadata into a checkpoint that is then loaded into the TensorBoard Embedding Projector for visualizing the learned feature space.
+
+* `Visualizing Conv Net Saliency Maps.ipynb` applies [a visualization algorithm](https://arxiv.org/pdf/1611.05418.pdf) that highlights salient parts of an input image using conv layer activations. It also plots Q-value predictions frame-by-frame to an output video. [FFmpeg](https://ffmpeg.org/) will need to be installed to write videos.
