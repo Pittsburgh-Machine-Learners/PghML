@@ -49,7 +49,7 @@ Next, install the required packages from the requirements.txt:
 
 `pip install -r requirements.txt`
 
-**NOTE: If you have an NVIDIA GPU you should replace `tensorflow` with `tensorflow-gpu` in requirements.txt. GPU acceleration will significantly speed up some of the code examples.**
+**NOTE: If you have an NVIDIA GPU you should replace `tensorflow` with `tensorflow-gpu` in requirements.txt. GPU acceleration will significantly speed up some of the code examples. You will also need to install the [CUDA libs from here](https://developer.nvidia.com/cuda-downloads).**
 
 If using a virtualenv, there's one more step to get its kernel working with Jupyter notebooks:
 
