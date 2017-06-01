@@ -1,0 +1,13 @@
+tensorflow
+#tensorflow-gpu
+keras
+scikit-learn
+h5py
+opencv-python
+scikit-image
+atari-py==0.1.1
+gym[atari]==0.9.1
+gym[breakout-v0]
+blosc
+pandas
+jupyter

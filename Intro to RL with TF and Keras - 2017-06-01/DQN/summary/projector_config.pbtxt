@@ -1,0 +1,9 @@
+embeddings {
+  tensor_name: "state_embeddings_1:0"
+  metadata_path: "./summary/metadata.tsv"
+  sprite {
+    image_path: "./summary/sprite.png"
+    single_image_dim: 128
+    single_image_dim: 168
+  }
+}
