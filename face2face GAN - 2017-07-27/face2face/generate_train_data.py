@@ -10,6 +10,7 @@ import argparse
 import numpy as np
 from imutils import video
 import random
+from threading import Thread
 
 
 parser = argparse.ArgumentParser()
@@ -22,7 +23,45 @@ parser.add_argument('--num', type=int, help='Number of train data to be created.
 parser.add_argument('--landmark-model', dest='face_landmark_shape_file', type=str, help='Face landmark model file.')
 parser.add_argument('--points', action='store_true', help='Draw landmarks as circles instead of polylines', default=False)
 parser.add_argument('--zoom', type=float, help="Zoom factor", default=1)
+parser.add_argument('--webcam', action='store_true', help="Take input from webcam instead of video file", default=False)
 args = parser.parse_args()
+
+
+class WebcamVideoStream:
+    # From http://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/
+
+    def __init__(self, src=0):
+        # initialize the video camera stream and read the first frame
+        # from the stream
+        self.stream = cv2.VideoCapture(src)
+        (self.ret, self.frame) = self.stream.read()
+ 
+        # initialize the variable used to indicate if the thread should
+        # be stopped
+        self.stopped = False
+
+    def start(self):
+        # start the thread to read frames from the video stream
+        Thread(target=self.update, args=()).start()
+        return self
+ 
+    def update(self):
+        # keep looping infinitely until the thread is stopped
+        while True:
+            # if the thread indicator variable is set, stop the thread
+            if self.stopped:
+                return
+ 
+            # otherwise, read the next frame from the stream
+            (self.ret, self.frame) = self.stream.read()
+ 
+    def read(self):
+        # return the frame most recently read
+        return (self.ret, self.frame)
+ 
+    def stop(self):
+        # indicate that the thread should be stopped
+        self.stopped = True
 
 
 def reshape_for_polyline(array):
@@ -33,19 +72,21 @@ def main():
     os.makedirs('original', exist_ok=True)
     os.makedirs('landmarks', exist_ok=True)
 
-    cap = cv2.VideoCapture(args.filename)
+    if args.webcam:
+        cap = WebcamVideoStream(0).start()
+    else:
+        cap = cv2.VideoCapture(args.filename)
+
     fps = video.FPS().start()
 
     count = 0
     frame_count = 0
 
-    while cap.isOpened():
+    ret = True
+
+    while ret is True:
         frame_count += 1
         print("Frame:",frame_count)
-
-        if random.random() < args.skip_prob:
-            print("Skipping with prob",args.skip_prob)
-            continue          
 
         ret, frame = cap.read()
 
