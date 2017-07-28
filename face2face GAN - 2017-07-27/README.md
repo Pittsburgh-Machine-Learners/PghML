@@ -1,6 +1,6 @@
 # Face2Face: Image Translation with Generative Adversarial Networks
 
-This repo contains the code examples for the [Pittsburgh Machine Learners meetup](https://www.meetup.com/Pittsburgh-Machine-Learners/events/241753177/) on 2017-07-27.
+This repo contains the code examples for the [Pittsburgh Machine Learners meetup](https://www.meetup.com/Pittsburgh-Machine-Learners/events/241753177/) on 2017-07-27. Slides for this talk are [available here](https://docs.google.com/presentation/d/1uYSM7hR8H6aNv6hGkzfS05ojQiuVOgnq5ASLpGy8IGk/edit?usp=sharing).
 
 The code is adapted from the pix2pix / face2face TensorFlow implementations with minor modifications.
 
@@ -28,12 +28,15 @@ dlib also requires a landmark model to perform facial keypoint detection that ca
 
 ## Running a pre-trained model
 
-There is a pretrained face2face model available at:
+Three pretrained face2face models can be downloaded from:
 
 * https://u7410512.dl.dropboxusercontent.com/u/7410512/face2face-demo/face2face_model_epoch_200.zip
 
+* https://www.dropbox.com/s/z1fxulh8wyykk0z/frozen_model_1000img_300epochs.pb?dl=1
 
-Once that's downloaded, the model can be run process frames captured from a webcam with:
+* https://www.dropbox.com/s/6s4rbcxfu5k0kro/frozen_model_1000imgs_300epochs_2.pb?dl=1 
+
+Once a frozen .pb model is downloaded, the model can process frames captured from a webcam with:
 
 ```
 cd face2face/
