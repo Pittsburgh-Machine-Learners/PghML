@@ -33,13 +33,28 @@ There is a pretrained face2face model available at:
 * https://u7410512.dl.dropboxusercontent.com/u/7410512/face2face-demo/face2face_model_epoch_200.zip
 
 
-Once that's downloaded, the model can be run with:
+Once that's downloaded, the model can be run process frames captured from a webcam with:
 
 ```
 cd face2face/
 
 python run_webcam.py --landmark-model path/to/shape_predictor_68_face_landmarks.dat --tf-model path/to/frozen_model.pb
 ```
+
+Some other options for this script:
+
+* `--video`  Process frames from an input video file instead of webcam
+
+* `--video-out`  Write processed frames out to a .mp4 video file. Input frames can come from a video file or webcam. Requires ffmpeg.
+
+* `--fps`  Set the frames per second for video output. Default is 10.
+
+* `--scale`  Multiplier to scale the size of output frames
+
+* `--skip-fails`  Do not show/write frames where no face is detected
+
+* `--zoom`  Zoom into input by upscaling and center cropping
+
 
 ## Training a new model
 
