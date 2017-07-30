@@ -24,6 +24,7 @@ parser.add_argument('--landmark-model', dest='face_landmark_shape_file', type=st
 parser.add_argument('--points', action='store_true', help='Draw landmarks as circles instead of polylines', default=False)
 parser.add_argument('--zoom', type=float, help="Zoom factor", default=1)
 parser.add_argument('--webcam', action='store_true', help="Take input from webcam instead of video file", default=False)
+parser.add_argument('--show', action='store_true', help="Show extracted frames", default=False)
 args = parser.parse_args()
 
 
@@ -163,6 +164,11 @@ def main():
 
                 cv2.imwrite("original/{}_{}.png".format(count, round(down, 3)), frame)
                 cv2.imwrite("landmarks/{}_{}.png".format(count, round(down, 3)), black_image)
+
+                if args.show:
+                    cv2.imshow("Capturing Train Data", np.concatenate([black_image, frame_resize], axis=1))
+                    key = cv2.waitKey(1) 
+
                 fps.update()
 
                 print('[INFO] elapsed time: {:.2f}'.format(time.time() - t))
