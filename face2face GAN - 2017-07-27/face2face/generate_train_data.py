@@ -63,6 +63,9 @@ class WebcamVideoStream:
         # indicate that the thread should be stopped
         self.stopped = True
 
+    def release(self):
+        self.stop()
+
 
 def reshape_for_polyline(array):
     return np.array(array, np.int32).reshape((-1, 1, 2))
@@ -95,7 +98,7 @@ def main():
             frame = cv2.resize(frame, None, fx=args.zoom, fy=args.zoom)
             h, w, _ = frame.shape
             off_h, off_w = int((h - o_h) / 2), int((w - o_w) / 2)
-            frame = frame[0:h-off_h, off_w:w-off_w, :]
+            frame = frame[off_h:h-off_h, off_w:w-off_w, :]
 
         for _ in range(args.n):
             if args.dmax > 0 and args.dmin > 0:
