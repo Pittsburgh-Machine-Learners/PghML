@@ -123,44 +123,44 @@ def main():
                 print(count)
                     
                 for face in faces:
-                        detected_landmarks = predictor(gray, face).parts()
-                        landmarks = [[int(p.x), int(p.y)] for p in detected_landmarks]
+                    detected_landmarks = predictor(gray, face).parts()
+                    landmarks = [[int(p.x), int(p.y)] for p in detected_landmarks]
 
-                        color = (255, 255, 255)
-                        thickness = 3
+                    color = (255, 255, 255)
+                    thickness = 3
 
-                        if args.points:
-                            jaw = landmarks[0:17]
-                            left_eyebrow = landmarks[22:27]
-                            right_eyebrow = landmarks[17:22]
-                            nose_bridge = landmarks[27:31]
-                            lower_nose = landmarks[30:35]
-                            left_eye = landmarks[42:48]
-                            right_eye = landmarks[36:42]
-                            outer_lip = landmarks[48:60]
-                            inner_lip = landmarks[60:68]
-                            for part in [jaw, left_eyebrow, right_eyebrow, nose_bridge, lower_nose, left_eye, right_eye, outer_lip, inner_lip]:
-                                for x,y in part:
-                                    cv2.circle(black_image, (x, y), 1, (255, 255, 255), -1)
-                        else:
-                            jaw = reshape_for_polyline(landmarks[0:17])
-                            left_eyebrow = reshape_for_polyline(landmarks[22:27])
-                            right_eyebrow = reshape_for_polyline(landmarks[17:22])
-                            nose_bridge = reshape_for_polyline(landmarks[27:31])
-                            lower_nose = reshape_for_polyline(landmarks[30:35])
-                            left_eye = reshape_for_polyline(landmarks[42:48])
-                            right_eye = reshape_for_polyline(landmarks[36:42])
-                            outer_lip = reshape_for_polyline(landmarks[48:60])
-                            inner_lip = reshape_for_polyline(landmarks[60:68])
-                            cv2.polylines(black_image, [jaw], False, color, thickness)
-                            cv2.polylines(black_image, [left_eyebrow], False, color, thickness)
-                            cv2.polylines(black_image, [right_eyebrow], False, color, thickness)
-                            cv2.polylines(black_image, [nose_bridge], False, color, thickness)
-                            cv2.polylines(black_image, [lower_nose], True, color, thickness)
-                            cv2.polylines(black_image, [left_eye], True, color, thickness)
-                            cv2.polylines(black_image, [right_eye], True, color, thickness)
-                            cv2.polylines(black_image, [outer_lip], True, color, thickness)
-                            cv2.polylines(black_image, [inner_lip], True, color, thickness)
+                    if args.points:
+                        jaw = landmarks[0:17]
+                        left_eyebrow = landmarks[22:27]
+                        right_eyebrow = landmarks[17:22]
+                        nose_bridge = landmarks[27:31]
+                        lower_nose = landmarks[30:35]
+                        left_eye = landmarks[42:48]
+                        right_eye = landmarks[36:42]
+                        outer_lip = landmarks[48:60]
+                        inner_lip = landmarks[60:68]
+                        for part in [jaw, left_eyebrow, right_eyebrow, nose_bridge, lower_nose, left_eye, right_eye, outer_lip, inner_lip]:
+                            for x,y in part:
+                                cv2.circle(black_image, (x, y), 1, (255, 255, 255), -1)
+                    else:
+                        jaw = reshape_for_polyline(landmarks[0:17])
+                        left_eyebrow = reshape_for_polyline(landmarks[22:27])
+                        right_eyebrow = reshape_for_polyline(landmarks[17:22])
+                        nose_bridge = reshape_for_polyline(landmarks[27:31])
+                        lower_nose = reshape_for_polyline(landmarks[30:35])
+                        left_eye = reshape_for_polyline(landmarks[42:48])
+                        right_eye = reshape_for_polyline(landmarks[36:42])
+                        outer_lip = reshape_for_polyline(landmarks[48:60])
+                        inner_lip = reshape_for_polyline(landmarks[60:68])
+                        cv2.polylines(black_image, [jaw], False, color, thickness)
+                        cv2.polylines(black_image, [left_eyebrow], False, color, thickness)
+                        cv2.polylines(black_image, [right_eyebrow], False, color, thickness)
+                        cv2.polylines(black_image, [nose_bridge], False, color, thickness)
+                        cv2.polylines(black_image, [lower_nose], True, color, thickness)
+                        cv2.polylines(black_image, [left_eye], True, color, thickness)
+                        cv2.polylines(black_image, [right_eye], True, color, thickness)
+                        cv2.polylines(black_image, [outer_lip], True, color, thickness)
+                        cv2.polylines(black_image, [inner_lip], True, color, thickness)
 
                 cv2.imwrite("original/{}_{}.png".format(count, round(down, 3)), frame)
                 cv2.imwrite("landmarks/{}_{}.png".format(count, round(down, 3)), black_image)
