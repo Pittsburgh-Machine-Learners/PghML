@@ -8,7 +8,7 @@ To install the prerequisites:
 
 `pip3 install -r requirements.txt`
 
-If you have an NVIDIA GPU with CUDA/cuDNN installed then uncomment the #tensorflow-gpu line and comment tensorflow. Do the reverse to use the CPU-only version of TF.
+If you have an NVIDIA GPU with CUDA/cuDNN installed then uncomment the `#tensorflow-gpu` line and comment `tensorflow`. Do the reverse to use the CPU-only version of TF.
 
 To download the VGG16 model (57MB) ahead of time:
 
