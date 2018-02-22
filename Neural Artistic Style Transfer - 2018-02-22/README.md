@@ -6,7 +6,7 @@ The notebook `Neural Style Transfer with TF and Keras.ipynb` implements the algo
 
 To install the prerequisites:
 
-`pip install -r requirements.txt`
+`pip3 install -r requirements.txt`
 
 If you have an NVIDIA GPU with CUDA/cuDNN installed then uncomment the #tensorflow-gpu line and comment tensorflow. Do the reverse to use the CPU-only version of TF.
 
