@@ -1,0 +1,7 @@
+keras
+scipy
+pillow
+h5py
+matplotlib
+tensorflow
+#tensorflow-gpu
