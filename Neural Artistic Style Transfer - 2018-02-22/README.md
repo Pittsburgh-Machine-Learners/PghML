@@ -10,6 +10,6 @@ To install the prerequisites:
 
 If you have an NVIDIA GPU with CUDA/cuDNN installed then uncomment the #tensorflow-gpu line and comment tensorflow. Do the reverse to use the CPU-only version of TF.
 
-To download the VGG16 model ahead of time:
+To download the VGG16 model (57MB) ahead of time:
 
-`python3 -c 'from vgg16_avg import VGG16_Avg; VGG16_Avg(include_top=False)`
+`python3 -c 'from vgg16_avg import VGG16_Avg; VGG16_Avg(include_top=False)'`
