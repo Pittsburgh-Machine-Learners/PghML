@@ -1,6 +1,6 @@
 # Neural Style Transfer with TF and Keras
 
-This is the code for the Pittsburgh Machine Learners meetup on February 22nd, 2018. 
+This is the code for the Pittsburgh Machine Learners meetup on February 22nd, 2018. Slides can be [found here](https://docs.google.com/presentation/d/19xrly-qpLYVkOc0SsGgHA2908z5fzeiFndGaBm6llyo/edit?usp=sharing).
 
 The notebook `Neural Style Transfer with TF and Keras.ipynb` implements the algorithm from [A Neural Algorithm of Artistic Style](https://arxiv.org/abs/1508.06576) by Gatys et al.
 
